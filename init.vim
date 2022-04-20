@@ -39,8 +39,6 @@ map <F2> :NERDTreeToggle<CR>
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 
-set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
-
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
 set number
