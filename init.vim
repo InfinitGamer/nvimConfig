@@ -36,10 +36,6 @@ let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 " Abrir/cerrar NERDTree con F2
 map <F2> :NERDTreeToggle<CR>
 
-
-let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
-let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
-
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 
