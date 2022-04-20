@@ -3,11 +3,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Aquí irán los plugins a instalar
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes' 
 Plug 'Yggdroot/indentLine'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-lualine/lualine.nvim'
 call plug#end()
 
 set title  " Muestra el nombre del archivo en la ventana de la terminal
@@ -25,9 +25,11 @@ set expandtab  " Insertar espacios en lugar de <Tab>s
 " Luego de esta línea puedes agregar tus configuraciones y mappings
 set spelllang=en,es  " Corregir palabras usando diccionarios en inglés y español
 
-set termguicolors  " Activa true colors en la terminal
 
 colorscheme tokyonight
+
+
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
 
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 
@@ -52,4 +54,39 @@ set number
 :  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 :augroup END
 
+
+
+
+lua <<END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'seoul256',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+END
 source $HOME/.config/nvim/plug-config/coc.vim
+
